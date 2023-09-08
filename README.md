@@ -42,7 +42,7 @@ seu_disco.k /usr/obj
 seu_disco.j /usr/src
 seu_disco.e /var ffs
 ```
-Para não ficar engessado, você pode alterar obviamente alterar todo o layout de particionamento montando a raiz apenas e recriando a árvore de diretórios dentro dela.
+Para não ficar engessado, você pode obviamente alterar todo o layout de particionamento montando a raiz apenas e recriando a árvore de diretórios dentro dela.
 
 ### O esquema de particionamento Unix BSD
 - A letra `a` é a partição raiz
