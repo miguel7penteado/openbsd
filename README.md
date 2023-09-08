@@ -42,7 +42,7 @@ Offset: 0       Signature: 0xAA55
 
 O identificador do tipo da partição BSD (do kernel OpenBSD) deve ser `A6`.
 
-### Montando o layout BSD do disco:
+### Criando o layout da partição BSD do disco:
 O comando `disklabel` vai funcionar como uma espécie de cgdisk do linux. 
 ```ksh
 disklabel -E wd0
