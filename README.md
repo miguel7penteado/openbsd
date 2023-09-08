@@ -6,7 +6,12 @@ This FAQ explains how to create additional partitions for OpenBSD. Some experien
 
 ```ksh
 sysctl hw.disknames
+# Saída
+hw.disknames=wd0:bfb4775bb8397569,cd0:,wd1:56845c8da732ee7b,wd2:f18e359c8fa2522b
 ```
+Os discos são identificados por Disklabel Unique Identifiers (DUIDs) no arquivo fstab(5) por padrão. DUIDs são números aleatórios de 16 dígitos hexadecimais gerados quando um disklabel é criado pela primeira vez.
+por exemplo, o disco wd0 é identificado por `bfb4775bb8397569`.
+
 Se seu disco for SATA você verá `sd0` para o primeiro disco e `sd1` para o segundo e assim por diante
 Se seu disco for  ATA você verá `wd0` para o primeiro disco e `wd1` para o segundo e assim por diante
 
