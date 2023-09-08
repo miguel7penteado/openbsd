@@ -8,7 +8,7 @@ Vamos ver como o openbsd trata discos e partições.
 
 ### Listando seus discos de armazenamento
 
-Para listar os discos reconhecidos pelo kernel após o boot faça 
+Para listar os discos reconhecidos pelo kernel após a inicialização faça 
 
 ```ksh
 sysctl hw.disknames
