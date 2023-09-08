@@ -1,5 +1,57 @@
 # OpenBSD
 
+This FAQ explains how to create additional partitions for OpenBSD. Some experience with OpenBSD is required to succesfully add a partitions. Specific knowledge of file editing is required to configure the VPS to automatically boot the partition.Note: If not mentioned, a command is always followed by an enter. First you will have to create a partition:
+
+## Criando partições
+
+```ksh
+sysctl hw.disknames
+```
+Se seu disco for SATA você verá `sd0` para o primeiro disco e `sd1` para o segundo e assim por diante
+Se seu disco for  ATA você verá `wd0` para o primeiro disco e `wd1` para o segundo e assim por diante
+
+### Particionando o disco:
+O comando `disklabel` vai funcionar como uma espécie de cgdisk do linux. 
+```ksh
+disklabel -E wd0
+```
+### O layout fixo criado durante a instalação
+Por motivos de "segurança", a instalação do OpenBSD gera um espaço particionado fixo no seguinte formato, onde cada partição é identificada na ferramenta `disklabel` por uma letra.
+
+```
+seu_disco.a /
+seu_disco.b swap
+seu_disco.c ## Espaço particionável
+seu_disco.l /home
+seu_disco.d /tmp
+seu_disco.f /usr
+seu_disco.g /usr/X11R6
+seu_disco.h /usr/local
+seu_disco.k /usr/obj
+seu_disco.j /usr/src
+seu_disco.e /var ffs
+```
+Para não ficar engessado, você pode alterar obviamente alterar todo o layout de particionamento montando a raiz apenas e recriando a árvore de diretórios dentro dela.
+
+### O esquema de particionamento Unix BSD
+- A letra `a` é a partição raiz
+- A letra `b` é a partição de swap
+- A letra `c` representa todo espaço em disco que você escolheu para particionar
+Como estamos lidando com partições no formato BSD 4.2, precisamos alocar todo espaço que vamos usar para fazer o layout das partições.
+
+### Particionando
+Comece inserindo novos limites pressionando `b`. Pressione Enter quando você entrar no Setor Inicial e posteriormente enviar `*`. Com este último comando os limites serão definidos para cobrir todo o seu disco.
+Liberamos espaço para a nova partição. Envie, 'a' para criar a partição.
+Uma letra de unidade será proposta. Você pode aceitar a proposta pressionando Enter ou escolher uma letra de unidade que ainda esteja livre. De qualquer forma, lembre-se desta carta, pois você precisará dela mais tarde. Para este FAQ usaremos 'x'.
+Agora você encontrará três configurações padrão. Você terá que aceitar todas as três propostas pressionando Enter três vezes seguidas.
+Para finalizar todas as alterações feitas nas etapas anteriores, pressione 'w'. Feche o disklabel com 'q'.
+Agora é hora de criar um novo sistema de arquivos em sua partição. Use o seguinte comando 'newfs wd0X'. Substitua X pela letra da unidade que você escolheu na etapa 4.
+Posteriormente, o sistema de arquivos deve ser colocado em um mapa. Este mapa primeiro precisa ser criado. Use o comando 'mkdir /transip' para criar um mapa. Você pode substituir transip por qualquer nome que desejar.
+Em seguida, você precisa montar o novo sistema de arquivos no sistema de arquivos existente. Use este comando 'mount /dev/wd0x /transip'. Substitua transip pelo nome do mapa que você escolheu na etapa 8.
+Coloque o novo sistema de arquivos em '/etc/fstab' para garantir que a partição seja inicializada automaticamente após uma reinicialização. Caso contrário, você precisará executar o comando do passo 9 sempre que seu VPS for reiniciado.
+
+
+
 ## Rede
 
 ```sh
