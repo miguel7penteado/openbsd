@@ -1,7 +1,5 @@
 # OpenBSD
 
-This FAQ explains how to create additional partitions for OpenBSD. Some experience with OpenBSD is required to succesfully add a partitions. Specific knowledge of file editing is required to configure the VPS to automatically boot the partition.Note: If not mentioned, a command is always followed by an enter. First you will have to create a partition:
-
 ## Criando partições
 
 Vamos ver como o openbsd trata discos e partições.
