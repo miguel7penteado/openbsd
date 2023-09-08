@@ -4,6 +4,8 @@ This FAQ explains how to create additional partitions for OpenBSD. Some experien
 
 ## Criando partições
 
+### Listando seus discos de armazenamento
+
 ```ksh
 sysctl hw.disknames
 # Saída
