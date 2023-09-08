@@ -21,7 +21,28 @@ por exemplo, o disco wd0 é identificado por `bfb4775bb8397569`.
 - Se seu disco for SATA você verá `sd0` para o primeiro disco e `sd1` para o segundo e assim por diante
 - Se seu disco for  ATA você verá `wd0` para o primeiro disco e `wd1` para o segundo e assim por diante
 
-### Particionando o disco:
+
+### Particionando o disco
+Supondo que você vá particionar o disco reconhecido como `sd0` (que pode ser um pendrive ou um disco sata)
+
+```ksh
+fdisk sd0
+
+## Saída
+Disk: sd0       geometry: 553/255/63 [8883945 Sectors]
+Offset: 0       Signature: 0xAA55
+         Starting       Ending       LBA Info:
+ #: id    C   H  S -    C   H  S [       start:      size   ]
+------------------------------------------------------------------------
+ 0: 12    0   1  1 -    2 254 63 [          63:       48132 ] Compaq Diag.
+ 1: 00    0   0  0 -    0   0  0 [           0:           0 ] unused
+ 2: 00    0   0  0 -    0   0  0 [           0:           0 ] unused
+*3: A6    3   0  1 -  552 254 63 [       48195:     8835750 ] OpenBSD
+```
+
+O identificador do tipo da partição BSD (do kernel OpenBSD) deve ser `A6`.
+
+### Montando o layout BSD do disco:
 O comando `disklabel` vai funcionar como uma espécie de cgdisk do linux. 
 ```ksh
 disklabel -E wd0
