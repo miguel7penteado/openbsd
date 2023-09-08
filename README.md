@@ -43,13 +43,12 @@ Offset: 0       Signature: 0xAA55
 O identificador do tipo da partição BSD (do kernel OpenBSD) deve ser `A6`.
 
 ### Criando o layout da partição BSD do disco:
-O comando `disklabel` vai funcionar como uma espécie de cgdisk do linux. 
+O comando `disklabel` vai funcionar como um editor de layout da partição BSD no disco escolhido. 
 ```ksh
 disklabel -E wd0
 ```
 ### O layout fixo criado durante a instalação
 Por motivos de "segurança", a instalação do OpenBSD gera um espaço particionado fixo no seguinte formato, onde cada partição é identificada na ferramenta `disklabel` por uma letra.
-
 ```
 seu_disco.a /
 seu_disco.b swap
@@ -72,6 +71,11 @@ Para não ficar engessado, você pode obviamente alterar todo o layout de partic
 Como estamos lidando com partições no formato BSD 4.2, precisamos alocar todo espaço que vamos usar para fazer o layout das partições.
 
 ### Particionando
+Vamos editar o layout da partição bsd do disco `wd0`
+
+```ksh
+disklabel -E wd0
+```
 Comece inserindo novos limites pressionando `b`. Pressione Enter quando você entrar no Setor Inicial e posteriormente enviar `*`. Com este último comando os limites serão definidos para cobrir todo o seu disco.
 Liberamos espaço para a nova partição. Envie, 'a' para criar a partição.
 Uma letra de unidade será proposta. Você pode aceitar a proposta pressionando Enter ou escolher uma letra de unidade que ainda esteja livre. De qualquer forma, lembre-se desta carta, pois você precisará dela mais tarde. Para este FAQ usaremos 'x'.
