@@ -230,3 +230,4 @@ doas sysctl kern.audio.record=1
 doas mixerctl record.adc-0:1_mute=off
 aucat -o file.wav # CTRL+C to stop
 ```
+Fonte ![https://www.openbsdhandbook.com/](https://www.openbsdhandbook.com/)
