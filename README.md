@@ -1,5 +1,11 @@
 # OpenBSD
 
+## Modulos do Kernel
+
+Os módulos do kernel NetBSD e OpenBSD terminam com `.o.`
+Os módulos do kernel do NetBSD estão em `/usr/lkm`. FAZER: E OpenBSD
+NetBSD e OpenBSD usam as ferramentas `modload`, `modunload` e `modstat`.
+
 ## Criando partições
 
 Vamos ver como o openbsd trata discos e partições.
