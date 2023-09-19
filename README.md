@@ -17,6 +17,22 @@ Your choice: 1
 #sudo-1.8.31: ok
 ```
 
+### Dando permissões para usuários do grupo wheel usar o programa `sudo`
+
+Verifique o arquivo `/etc/sudoers` com **visudo**
+
+```ksh
+visudo
+```
+Remova o comentário para permitir que as pessoas no grupo wheel executem todos os comandos e defina variáveis de ambiente.
+
+```ksh
+# conteúdo do arquivo /etc/sudoers
+# descomente essa linha
+%wheel  ALL=(ALL) SETENV: ALL
+```
+Salve e saia do editor *visudo*. Digite ESC, depois :WQ e ENTER
+>>> Nota: O utilitário visudo realiza a verificação de sintaxe antes de enviar suas edições no arquivo. Um arquivo sudoers malformado pode danificar seu sistema. Nunca edite /etc/sudoers diretamente. Por exemplo, se você cometer um erro, verá isso ao sair do visudo.
 
 ## Adicionar Usuários
 
