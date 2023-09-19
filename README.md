@@ -2,6 +2,7 @@
 
 
 ## Adicionando um novo pacote ao sistema
+
 Vamos adicionar a ferramenta **sudo** à nossa instalação de OpenBSD. Para isso vamos instalar o pacote da ferramenta:
 
 ```ksh
