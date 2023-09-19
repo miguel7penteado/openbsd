@@ -1,5 +1,41 @@
 # OpenBSD
 
+
+## Adicionando um novo pacote ao sistema
+Vamos adicionar a ferramenta **sudo** à nossa instalação de OpenBSD. Para isso vamos instalar o pacote da ferramenta:
+
+```ksh
+pkg_add sudo
+
+#quirks-3.187 signed on 2020-05-19T14:41:48Z
+#Ambiguous: choose package for sudo
+#a       0: <None>
+#        1: sudo-1.8.31
+#        2: sudo-1.8.31-gettext
+#        3: sudo-1.8.31-gettext-ldap
+Your choice: 1
+#sudo-1.8.31: ok
+```
+
+
+## Adicionar Usuários
+
+```ksh
+useradd -m miguel
+passwd
+Changing password for miguel.
+New password: (digite_sua_senha)
+Retype new password: (redigite_sua_senha)
+```
+
+## Adicionar o Usuário a um grupo
+Lembre-se que, para poder executar o comando `su`, seu usuário deve pertencer ao grupo **wheel**. Então vamos adicionar meu usuário ao grupo **wheel**.
+```ksh
+user mod -G wheel miguel
+```
+
+
+
 ## Modulos do Kernel
 
 Os módulos do kernel NetBSD e OpenBSD terminam com `.o.`
