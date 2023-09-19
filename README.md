@@ -2,9 +2,8 @@
 
 
 ## Adicionando um novo pacote ao sistema
-
-Vamos adicionar a ferramenta **sudo** à nossa instalação de OpenBSD. Para isso vamos instalar o pacote da ferramenta:
-
+O comando **sudo** não está disponível por padrão no OpenBSD. Em vez disso, o OpenBSD usa o comando **doas**.
+Contudo, para exemplificar a instalação de um pacote, vamos usar como pacote exemplo o pacote da ferramenta **sudo**. Vamos adicionar a ferramenta **sudo** à nossa instalação de OpenBSD. Para isso vamos instalar o pacote da ferramenta:
 ```ksh
 pkg_add sudo
 
